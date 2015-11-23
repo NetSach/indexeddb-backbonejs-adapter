@@ -23,7 +23,7 @@
         return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
     }
 
-    if (typeof indexedDB === "undefined") { return; }
+    if (typeof shimIndexedDB === "undefined") { return; }
 
     var Deferred = Backbone.$ && Backbone.$.Deferred;
 
@@ -41,7 +41,7 @@
         this.onerror        = onerror;
         var lastMigrationPathVersion = _.last(this.schema.migrations).version;
         if (!this.nolog) debugLog("opening database " + this.schema.id + " in version #" + lastMigrationPathVersion);
-        this.dbRequest      = indexedDB.open(this.schema.id,lastMigrationPathVersion); //schema version need to be an unsigned long
+        this.dbRequest      = shimIndexedDB.open(this.schema.id,lastMigrationPathVersion); //schema version need to be an unsigned long
 
         this.launchMigrationPath = function(dbVersion) {
             var transaction = this.dbRequest.transaction;
