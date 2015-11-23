@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "backbone": "*",
-    "underscore": "*"
+    "underscore": "*",
+    "IndexedDBShim": "~2.2.1",
   },
   "devDependencies": {
     "grunt": "0.4.4",
